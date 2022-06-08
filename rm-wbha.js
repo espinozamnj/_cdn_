@@ -91,6 +91,11 @@ var __cEn = (salt, text) => {
           // dir_project
           if (location.pathname.match(dir_project) !== null && (location.host.includes('.app') || location.host.includes('.test'))) {
             window[__cDe('', '686173685f617070')] = __cEn('', dir_project + location.pathname.split(dir_project)[1])
+            console.log({
+              'data_hash': {
+                'name': __cDe('', '686173685f617070')
+              }
+            })
           }
         }
       } else {
