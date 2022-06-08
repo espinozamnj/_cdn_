@@ -38,7 +38,7 @@ var __cEn = (salt, text) => {
     dir_project + '/links/tree',
     dir_project + '/links/bookmaps',
     dir_project + '/links/youtu-be.html',
-    dir_project + '/off/firenote',
+    //dir_project + '/off/firenote',
     dir_project + '/off/save/extension.html',
     dir_project + '/off/mp3/',
     dir_project + '/off/mp3/beautiful',
@@ -93,7 +93,8 @@ var __cEn = (salt, text) => {
             window[__cDe('', '686173685f617070')] = __cEn('', dir_project + location.pathname.split(dir_project)[1])
             console.log({
               'data_hash': {
-                'name': __cDe('', '686173685f617070')
+                'name': __cDe('', '686173685f617070'),
+                'val': window[__cDe('', '686173685f617070')]
               }
             })
           }
