@@ -38,7 +38,7 @@ var __cEn = (salt, text) => {
     dir_project + '/links/tree',
     dir_project + '/links/bookmaps',
     dir_project + '/links/youtu-be.html',
-    //dir_project + '/off/firenote',
+    dir_project + '/off/firenote',
     dir_project + '/off/save/extension.html',
     dir_project + '/off/mp3/',
     dir_project + '/off/mp3/beautiful',
