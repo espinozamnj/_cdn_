@@ -61,7 +61,7 @@ var __cEn = (salt, text) => {
     if (localStorage['sett'] == undefined && typeof(__initLOG__) == 'undefined') {
       redirect()
     } else {
-      let rec_loc = __cDe('123456',localStorage['sett'])
+      let rec_loc = __cDe('123456', localStorage['sett'])
       if (rec_loc.includes('tempMarkDate')) {
         let d__, _f, _m, mi, mat, dcv, sam
         d__ = JSON.parse(rec_loc)
@@ -74,13 +74,37 @@ var __cEn = (salt, text) => {
           m: navigator.deviceMemory == d__.guid[1],
           g: getVideoCardInfo()['renderer'].toLowerCase() == d__.guid[2]['renderer'].toLowerCase()
         }
+        let exp = d__.expired, _ex = 0, _et = 0
+        if (exp == '') {
+          _ex = 30 * 60 * 1e3
+        } else {
+          if (exp.endsWith('m')) {
+            _ex = Number(exp.slice(0, -1))
+            _ex = _ex * 1e3 * 60
+          } else {
+            _ex = Number(exp)
+            _ex = _ex * 1e3 * 60 * 60 * 24
+          }
+        }
+        _et = new Date(_f + _ex).getTime()
         if (!d__.svs && sessionStorage.getItem('__app-log') == null) {
           localStorage.removeItem('sett')
-          alert('expired session')
+          alert('new session')
           redirect()
         } else {
           sessionStorage.setItem('__app-log', '0')
         }
+        function timing() {
+          if (new Date().getTime() > _et) {
+            localStorage.removeItem('sett')
+            alert('expired session')
+            redirect()
+          }
+        }
+        timing()
+        addEventListener('visibilitychange', function() { 
+          timing()
+        })
         sam = dcv.v && dcv.m && dcv.g
         if (mat !== 60 && sam) {
           console.log('incorrect password')
@@ -164,7 +188,7 @@ window.addEventListener('load', function () {
         e.c.style.display = ''
       }
     }
-    e.e.src = apu + '?s=#'
+    e.e.src = apu + '#new'
     e.s.innerHTML = `.--apks{}.--apks .-t-apk{font-family:monospace;width:${s.wdth}px;position:fixed;z-index:12345;bottom:4rem;left:0;transition:all ${s.dely};transform:translateX(-75%);}.--apks .-t-apk .-s-capsu{position:relative;border-radius:3px;background-color:rgb(62,89,159);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;}.--apks .-t-apk.-s-c-hidd{transform:translateX(calc(-75% - ${(s.wdth / 4) - 3}px))}.--apks.-ss-exp .-t-apk.-s-c-hidd{transform:translateX(calc(-${s.wdth + 30}px - ${(s.wdth / 4) - 3}px)) !important}.--apks.-ss-exp .-t-apk{opacity:1;transform:translateX(-${s.wdth + 30}px);left:100vw}.--apks.-ss-min .-t-apk{opacity:.22;transition-delay: ${s.dely};}.--apks .-s-hide{display:block;height:100%;width:100%;position:absolute;top:0;left:0;right:0;bottom:0;z-index:0;}.-t-apk:hover .-s-hide{background-color:rgba(0,0,0,0.28)}.-t-apk .-ss-grp{position:relative;z-index:1;display:flex;justify-content:space-around;font-family:monospace !important;height:${s.hhad}px}.-t-apk .-ss-icn{font-weight:bold;height:34px;display:flex;align-items:center;font-size:19px;user-select:none;justify-content:center;flex:1;cursor:pointer;text-decoration:none !important;color:white;font-family:inherit;}.--apks.-ss-min .-ss-mn{transform:translateX(4px);background-color:black;z-index:5;}.--apks.-ss-exp .-ss-mn{/*transition-delay:${s.dely};*/}.-t-apk .-ss-icn:hover{background-color:rgba(95,118,183,.7)}.-t-apk iframe{position:relative;z-index:1;width:100%;max-width:100%;min-width:100%;box-sizing:border-box;border:none;outline:none;transition:height ${s.dely};transition-delay:${s.dely};padding:4px;height:${s.hbod}px;padding-top:0px;}.--apks.-ss-min .-t-apk iframe{transition-delay:0s;height:0px;padding:0px 4px;}.--apks.-ss-min .-ss-mn{transition-delay:1s}`
     e.sn.addEventListener('dblclick', function(){
       if (e.o.classList.length == 2) {
@@ -227,16 +251,11 @@ window.addEventListener('load', function () {
     }
     
     e.sn.addEventListener('click', function(){
-      if (e.e.src == apu) {
-        e.e.src = apu + '?s=#'
+      if (e.e.src.includes('#new')) {
+        e.e.src = apu + '#self'
       } else {
-        e.e.src = apu
+        e.e.src = apu + '#new'
       }
-      e.e.addEventListener('load', function(){
-        setTimeout(function() {
-          e.o.scrollTop = 0
-        }, 20)
-      })
     })
     e.o.appendChild(e.c)
     e.c.appendChild(e.g)
