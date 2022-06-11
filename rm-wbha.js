@@ -86,6 +86,12 @@ var __cEn = (salt, text) => {
             _ex = _ex * 1e3 * 60 * 60 * 24
           }
         }
+        let data_session = {
+          init: _m.toLocaleString(),
+          now: new Date().toLocaleString(),
+          exipred: new Date(_et).toLocaleString()
+        }
+        sessionStorage.setItem('app_log_time', JSON.stringify(data_session))
         _et = new Date(_f + _ex).getTime()
         if (!d__.svs && sessionStorage.getItem('__app-log') == null) {
           localStorage.removeItem('sett')
@@ -124,12 +130,22 @@ var __cEn = (salt, text) => {
     }
   } 
 })()
-let __rmwbha = function () {
-  if (!!document.querySelector('[src^="https://cdn.000"]')) {
-    let __d = document.querySelector('[src^="https://cdn.000"]')
-    __d = __d.parentNode.parentNode
-    __d.parentNode.removeChild(__d)
+let __rmwbha = function() {
+  let ee = (emt) => { return document.querySelector(emt)}
+  function removeEmt(path, levels = 0) {
+    let em = ee(path)
+    if (em != null) {
+      let pp = em
+      while (levels--) (pp = pp.parentNode)
+      pp.parentNode.removeChild(pp)
+    }
   }
+  ([
+    ['[src^="https://cdn.000"]', 2],
+    ['body > .disclaimer', 0]
+  ]).forEach(function(qs) {
+    removeEmt(qs[0], qs[1])
+  })
 }
 window.addEventListener('load', function () {
   let dir_project = '_j.em'
