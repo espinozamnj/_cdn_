@@ -34,20 +34,23 @@ var __cEn = (salt, text) => {
   }
   let apps = [
     dir_project + '/off/note',
-    dir_project + '/links/chrome',
     dir_project + '/links/tree',
     dir_project + '/links/bookmaps',
     dir_project + '/links/youtu-be.html',
     dir_project + '/off/firenote',
-    dir_project + '/off/save/extension.html',
-    dir_project + '/off/mp3/',
-    dir_project + '/off/mp3/beautiful',
   ]
   let isP = false
   let site = location.pathname
   let m = 0
-  function redirect() {
-    location.href = location.origin + '/' + dir_project + '?=' + __cEn('to', location.pathname)
+  function redirect(message = '') {
+    if (message != '') {
+      alert(message)
+    }
+    localStorage.removeItem('sett')
+    let encode_require_login = location.origin + '/' + dir_project + '/?=' + __cEn('to', location.pathname)
+    setTimeout(function(){
+      location.href = encode_require_login
+    }, 5e2)
   }
   while (m < apps.length) {
     let nows = apps[m]
@@ -75,36 +78,42 @@ var __cEn = (salt, text) => {
           g: getVideoCardInfo()['renderer'].toLowerCase() == d__.guid[2]['renderer'].toLowerCase()
         }
         let exp = d__.expired, _ex = 0, _et = 0
+        let default_long_time = 10 * 60 * 1e3
         if (exp == '') {
-          _ex = 30 * 60 * 1e3
+          _ex = default_long_time
         } else {
           if (exp.endsWith('m')) {
             _ex = Number(exp.slice(0, -1))
             _ex = _ex * 1e3 * 60
           } else {
-            _ex = Number(exp)
-            _ex = _ex * 1e3 * 60 * 60 * 24
+            if (isNaN(exp)) {
+              _ex = default_long_time
+            } else {
+              _ex = Number(exp)
+              _ex = _ex * 1e3 * 60 * 60 * 24
+            }
           }
         }
+        _et = new Date(_f + _ex).getTime()
         let data_session = {
           init: _m.toLocaleString(),
           now: new Date().toLocaleString(),
-          exipred: new Date(_et).toLocaleString()
+          expired: new Date(_et).toLocaleString()
         }
         sessionStorage.setItem('app_log_time', JSON.stringify(data_session))
-        _et = new Date(_f + _ex).getTime()
         if (!d__.svs && sessionStorage.getItem('__app-log') == null) {
-          localStorage.removeItem('sett')
-          alert('new session')
-          redirect()
+          redirect('new session')
         } else {
           sessionStorage.setItem('__app-log', '0')
         }
         function timing() {
           if (new Date().getTime() > _et) {
-            localStorage.removeItem('sett')
-            alert('expired session')
-            redirect()
+            timing = function() {}
+            redirect('expired session')
+          }
+          if (localStorage['sett'] == undefined) {
+            timing = function() {}
+            redirect('remote close session')
           }
         }
         timing()
@@ -113,13 +122,12 @@ var __cEn = (salt, text) => {
         })
         sam = dcv.v && dcv.m && dcv.g
         if (mat !== 60 && sam) {
-          console.log('incorrect password')
           if (typeof(__initLOG__) == 'undefined'){
             redirect()
           }
         } else {
           // dir_project
-          if (location.pathname.match(dir_project) !== null && (location.host.includes('.io') || location.host.includes('.app') || location.host.includes('.test'))) {
+          if (location.pathname.match(dir_project) !== null && (location.host.includes('.io') || location.host.includes('127') || location.host.includes('.test'))) {
             window[__cDe('', '686173685f617070')] = __cEn('', dir_project + location.pathname.split(dir_project)[1])
           }
         }
