@@ -127,7 +127,7 @@ var __cEn = (salt, text) => {
           }
         } else {
           // dir_project
-          if (location.pathname.match(dir_project) !== null && (location.host.includes('.io') || location.host.includes('127') || location.host.includes('.test'))) {
+          if (location.pathname.match(dir_project) !== null && (location.host.includes('.io') || location.host.includes('.app') || location.host.includes('.test'))) {
             window[__cDe('', '686173685f617070')] = __cEn('', dir_project + location.pathname.split(dir_project)[1])
           }
         }
