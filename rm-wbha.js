@@ -42,27 +42,27 @@ var __cEn = (salt, text) => {
   let isP = false
   let site = location.pathname
   let m = 0
-  function redirect(message = '') {
-    if (message != '') {
-      alert(message)
-    }
-    localStorage.removeItem('sett')
-    let encode_require_login = location.origin + '/' + dir_project + '/?=' + __cEn('to', location.pathname)
-    setTimeout(function(){
-      location.href = encode_require_login
-    }, 5e2)
-  }
   while (m < apps.length) {
     let nows = apps[m]
-    let copt = '/' + nows
-    if (copt == site.substring(0,site.length-1) || copt == site ) {
+    let valid = new RegExp('/' + nows + '([/]?|[index\\.html\.*]?)')
+    if (valid.test(site)) {
       isP = true
     }
     m++
   }
+  function errorSession(message = '', redirect = true) {
+    if (message != '') {
+      sessionStorage.setItem('error-login', message)
+    }
+    localStorage.removeItem('sett')
+    let encode_require_login = location.origin + '/' + dir_project + '/?=' + __cEn('to', location.pathname)
+    if (redirect) {
+        location.href = encode_require_login
+    }
+  }
   if (isP) {
     if (localStorage['sett'] == undefined && typeof(__initLOG__) == 'undefined') {
-      redirect()
+      errorSession()
     } else {
       let rec_loc = __cDe('123456', localStorage['sett'])
       if (rec_loc.includes('tempMarkDate')) {
@@ -71,65 +71,78 @@ var __cEn = (salt, text) => {
         _f = new Date(d__.tempMarkDate * 1000).getTime()
         _m = new Date(_f)
         mi = d__.key.substring(1, 3)
-        mat = _m.getMinutes() - 1 + Number(mi)
-        dcv = {
-          v: navigator.appVersion.toLowerCase() == d__.guid[0].toLowerCase(),
-          m: navigator.deviceMemory == d__.guid[1],
-          g: getVideoCardInfo()['renderer'].toLowerCase() == d__.guid[2]['renderer'].toLowerCase()
-        }
-        let exp = d__.expired, _ex = 0, _et = 0
-        let default_long_time = 10 * 60 * 1e3
-        if (exp == '') {
-          _ex = default_long_time
+        if (isNaN(mi)) {
+          errorSession('nan')
         } else {
-          if (exp.endsWith('m')) {
-            _ex = Number(exp.slice(0, -1))
-            _ex = _ex * 1e3 * 60
+          mat = _m.getMinutes() - 1 + Number(mi)
+          dcv = {
+            v: navigator.userAgent.toLowerCase() == d__.guid[0].toLowerCase(),
+            m: navigator.deviceMemory == d__.guid[1],
+            g: getVideoCardInfo()['renderer'].toLowerCase() == d__.guid[2]['renderer'].toLowerCase()
+          }
+          let exp = d__.expired, _ex = 0, _et = 0
+          let default_long_time = 10 * 60 * 1e3
+          if (exp == '') {
+            _ex = default_long_time
           } else {
-            if (isNaN(exp)) {
-              _ex = default_long_time
+            if (exp.endsWith('m')) {
+              _ex = Number(exp.slice(0, -1))
+              _ex = _ex * 1e3 * 60
             } else {
-              _ex = Number(exp)
-              _ex = _ex * 1e3 * 60 * 60 * 24
+              if (isNaN(exp)) {
+                _ex = default_long_time
+              } else {
+                _ex = Number(exp)
+                _ex = _ex * 1e3 * 60 * 60 * 24
+              }
             }
           }
-        }
-        _et = new Date(_f + _ex).getTime()
-        let data_session = {
-          init: _m.toLocaleString(),
-          now: new Date().toLocaleString(),
-          expired: new Date(_et).toLocaleString()
-        }
-        sessionStorage.setItem('app_log_time', JSON.stringify(data_session))
-        if (!d__.svs && sessionStorage.getItem('__app-log') == null) {
-          redirect('new session')
-        } else {
-          sessionStorage.setItem('__app-log', '0')
-        }
-        function timing() {
-          if (new Date().getTime() > _et) {
-            timing = function() {}
-            redirect('expired session')
+          _et = new Date(_f + _ex).getTime()
+          let data_session = {
+            init: _m.toLocaleString(),
+            now: new Date().toLocaleString(),
+            expired: new Date(_et).toLocaleString()
           }
-          if (localStorage['sett'] == undefined) {
-            timing = function() {}
-            redirect('remote close session')
+          sessionStorage.setItem('app_log_time', JSON.stringify(data_session))
+          console.log(data_session)
+          if (!d__.svs && sessionStorage.getItem('__app-log') == null) {
+            errorSession('finished')
+          } else {
+            sessionStorage.setItem('__app-log', '0')
           }
-        }
-        timing()
-        addEventListener('visibilitychange', function() { 
-          timing()
-        })
-        sam = dcv.v && dcv.m && dcv.g
-        if (mat !== 60 && sam) {
-          if (typeof(__initLOG__) == 'undefined'){
-            redirect()
+          sam = dcv.v && dcv.m && dcv.g
+          if (mat !== 60 || !sam) {
+            if (typeof(__initLOG__) == 'undefined') {
+              if (!sam) {
+                errorSession('clone')
+              } else {
+                errorSession('fail')
+              }
+            }
+          } else {
+            // dir_project
+            if (location.pathname.match(dir_project) !== null && (location.host.includes('.io') || location.host.includes('.app') || location.host.includes('.test'))) {
+              window[__cDe('', '686173685f617070')] = __cEn('', dir_project + location.pathname.split(dir_project)[1])
+            }
           }
-        } else {
-          // dir_project
-          if (location.pathname.match(dir_project) !== null && (location.host.includes('.io') || location.host.includes('.app') || location.host.includes('.test'))) {
-            window[__cDe('', '686173685f617070')] = __cEn('', dir_project + location.pathname.split(dir_project)[1])
-          }
+          setTimeout(function() {
+            let timing = function() {
+              if (new Date().getTime() > _et) {
+                timing = function() {}
+                errorSession('expired')
+              }
+              setTimeout(function(){
+                if (localStorage['sett'] == undefined && typeof(__initLOG__) == 'undefined') {
+                  timing = function() {}
+                  errorSession('closed')
+                }
+              }, 1e3)
+            }
+            timing()
+            addEventListener('visibilitychange', function() { 
+              timing()
+            })
+          }, 8e2)
         }
       } else {
         document.write('<script type="text/undefined">')
