@@ -121,8 +121,13 @@ var __cEn = (salt, text) => {
             }
           } else {
             // dir_project
-            if (location.pathname.match(dir_project) !== null && (location.host.includes('.io') || location.host.includes('.app') || location.host.includes('.test'))) {
-              window[__cDe('', '686173685f617070')] = __cEn('', dir_project + location.pathname.split(dir_project)[1])
+            function hi (mtch) {
+              return location.host.includes(mtch)
+            }
+            if (location.pathname.match(dir_project) !== null && (hi('.io') || hi('.app') || hi('.test'))) {
+              let path = location.pathname.split(dir_project)[1]
+              path = path.replace(/index\.html/,'')
+              window[__cDe('', '686173685f617070')] = __cEn('', dir_project + path)
             }
           }
           setTimeout(function() {
