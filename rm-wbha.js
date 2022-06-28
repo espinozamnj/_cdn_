@@ -35,6 +35,7 @@ var __cEn = (salt, text) => {
   let apps = [
     dir_project + '/off/note',
     dir_project + '/links/tree',
+    dir_project + '/links/music',
     dir_project + '/links/bookmaps',
     dir_project + '/links/youtu-be.html',
     dir_project + '/off/firenote',
@@ -124,7 +125,7 @@ var __cEn = (salt, text) => {
             function hi (mtch) {
               return location.host.includes(mtch)
             }
-            if (location.pathname.match(dir_project) !== null && (hi('.io') || hi('.app') || hi('.test'))) {
+            if (location.pathname.match(dir_project) !== null && (hi('.io') || hi('.app') || hi('.test') || hi('127'))) {
               let path = location.pathname.split(dir_project)[1]
               path = path.replace(/index\.html/,'')
               window[__cDe('', '686173685f617070')] = __cEn('', dir_project + path)
