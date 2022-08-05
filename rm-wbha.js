@@ -115,6 +115,21 @@ var __cEn = (salt, text) => {
           if (mat !== 60 || !sam) {
             if (typeof(__initLOG__) == 'undefined') {
               if (!sam) {
+                let data_merge = {
+                  'result': dcv,
+                  'register_all': d__.guid,
+                  'register': [
+                    d__.guid[0].toLowerCase(),
+                    d__.guid[1],
+                    d__.guid[2]['renderer'].toLowerCase()
+                  ],
+                  'change': [
+                    navigator.userAgent.toLowerCase(),
+                    navigator.deviceMemory,
+                    getVideoCardInfo()['renderer'].toLowerCase(),
+                  ]
+                }
+                localStorage.setItem('logDevice', JSON.stringify(data_merge))
                 errorSession('clone')
               } else {
                 errorSession('fail')
