@@ -283,13 +283,14 @@ window.addEventListener('load', function () {
       pt.ny = pt.y - ev.clientY
       pt.x = ev.clientX
       pt.y = ev.clientY
+      let hclient = window.innerHeight
       if (e.d.classList.contains('-ss-exp')) {
-        calc = (e.sv.offsetTop * 0.4) + (window.innerHeight - pt.y) - s.hbod
+        calc = (e.sv.offsetTop * 0.4) + (hclient - pt.y) - s.hbod
       } else {
-        calc = (window.innerHeight - pt.y) - s.hhad / 2
+        calc = (hclient - pt.y) - s.hhad / 2
       }
       // console.log(calc)
-      if (calc < window.innerHeight - s.hall && calc > 4) {
+      if (calc < (hclient - 6 ) - s.hall && calc > 6) {
         e.o.style.transitionDelay = '0s'
         e.o.style.bottom = calc + 'px'
         // e.o.style.left = pt.x + 'px'
