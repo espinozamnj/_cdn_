@@ -77,7 +77,7 @@ var __cEn = (salt, text) => {
         } else {
           mat = _m.getMinutes() - 1 + Number(mi)
           let mod_useragent = navigator.userAgent
-          mod_useragent = mod_useragent.replace(/chrome\/\d[^ ]+/,'chromeXXX')
+          mod_useragent = mod_useragent.replace(/\whrome\/\d[^ ]+/,'chromeXXX')
           mod_useragent = mod_useragent.toLowerCase()
           dcv = {
             v: mod_useragent == d__.guid[0].toLowerCase(),
