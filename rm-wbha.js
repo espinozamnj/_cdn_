@@ -76,8 +76,11 @@ var __cEn = (salt, text) => {
           errorSession('nan')
         } else {
           mat = _m.getMinutes() - 1 + Number(mi)
+          let mod_useragent = navigator.userAgent
+          mod_useragent = mod_useragent.replace(/chrome\/\d[^ ]+/,'chromeXXX')
+          mod_useragent = mod_useragent.toLowerCase()
           dcv = {
-            v: navigator.userAgent.toLowerCase() == d__.guid[0].toLowerCase(),
+            v: mod_useragent == d__.guid[0].toLowerCase(),
             m: navigator.deviceMemory == d__.guid[1],
             g: getVideoCardInfo()['renderer'].toLowerCase() == d__.guid[2]['renderer'].toLowerCase()
           }
