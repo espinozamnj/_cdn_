@@ -73,7 +73,7 @@ var __cEn = (salt, text) => {
         _m = new Date(_f)
         mi = d__.key.substring(1, 3)
         let mod_useragent = navigator.userAgent
-        mod_useragent = mod_useragent.replace(/\wcdnhrome\/\d[^ ]+/,'chromeXXX')
+        mod_useragent = mod_useragent.replace(/\whrome\/\d[^ ]+/,'chromeXXX')
         mod_useragent = mod_useragent.toLowerCase()
         if (isNaN(mi)) {
           errorSession('nan')
