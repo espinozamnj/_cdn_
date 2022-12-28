@@ -943,19 +943,15 @@ html *::-webkit-scrollbar-thumb {
 html *::-webkit-scrollbar {
   width: 12px;
 }
-html[data-theme="light"] {
-  :root {
-    --tt-over-hover: #00000030;
-    --tt-commt-one-bg: #0000009e;
-    --tt-commt-two-bg: #00000080;
-  }
-}
 html[data-theme="dark"] {
-  :root {
-    --tt-hover-commts: #ffffff30;
-    --tt-commt-one-bg: #ffffff9e;
-    --tt-commt-two-bg: #ffffff80;
-  }
+  --tt-hover-commts: #00000030;
+  --tt-commt-one-bg: #0000009e;
+  --tt-commt-two-bg: #00000080;
+}
+html[data-theme="light"] {
+  --tt-hover-commts: #ffffff30;
+  --tt-commt-one-bg: #ffffff9e;
+  --tt-commt-two-bg: #ffffff80;
 }
 [class*="DivCardAvatar"],
 [class*="DivCardFooter"] {
