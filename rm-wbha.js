@@ -72,12 +72,15 @@ var __cEn = (salt, text) => {
         _f = new Date(d__.tempMarkDate * 1000).getTime()
         _m = new Date(_f)
         mi = d__.key.substring(1, 3)
+        let mod_useragent = navigator.userAgent
+        mod_useragent = mod_useragent.replace(/\whrome\/\d[^ ]+/,'chromeXXX')
+        mod_useragent = mod_useragent.toLowerCase()
         if (isNaN(mi)) {
           errorSession('nan')
         } else {
           mat = _m.getMinutes() - 1 + Number(mi)
           dcv = {
-            v: navigator.userAgent.toLowerCase() == d__.guid[0].toLowerCase(),
+            v: mod_useragent == d__.guid[0].toLowerCase(),
             m: navigator.deviceMemory == d__.guid[1],
             g: getVideoCardInfo()['renderer'].toLowerCase() == d__.guid[2]['renderer'].toLowerCase()
           }
@@ -115,6 +118,21 @@ var __cEn = (salt, text) => {
           if (mat !== 60 || !sam) {
             if (typeof(__initLOG__) == 'undefined') {
               if (!sam) {
+                let data_merge = {
+                  'result': dcv,
+                  'register_all': d__.guid,
+                  'register': [
+                    d__.guid[0].toLowerCase(),
+                    d__.guid[1],
+                    d__.guid[2]['renderer'].toLowerCase()
+                  ],
+                  'change': [
+                    mod_useragent,
+                    navigator.deviceMemory,
+                    getVideoCardInfo()['renderer'].toLowerCase(),
+                  ]
+                }
+                localStorage.setItem('logDevice', JSON.stringify(data_merge))
                 errorSession('clone')
               } else {
                 errorSession('fail')
@@ -268,13 +286,14 @@ window.addEventListener('load', function () {
       pt.ny = pt.y - ev.clientY
       pt.x = ev.clientX
       pt.y = ev.clientY
+      let hclient = window.innerHeight
       if (e.d.classList.contains('-ss-exp')) {
-        calc = (e.sv.offsetTop * 0.4) + (window.innerHeight - pt.y) - s.hbod
+        calc = (e.sv.offsetTop * 0.4) + (hclient - pt.y) - s.hbod
       } else {
-        calc = (window.innerHeight - pt.y) - s.hhad / 2
+        calc = (hclient - pt.y) - s.hhad / 2
       }
       // console.log(calc)
-      if (calc < window.innerHeight - s.hall && calc > 4) {
+      if (calc < (hclient - 6 ) - s.hall && calc > 6) {
         e.o.style.transitionDelay = '0s'
         e.o.style.bottom = calc + 'px'
         // e.o.style.left = pt.x + 'px'
