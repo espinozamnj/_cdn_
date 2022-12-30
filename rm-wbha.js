@@ -81,7 +81,7 @@ var __cEn = (salt, text) => {
           mat = _m.getMinutes() - 1 + Number(mi)
           dcv = {
             v: mod_useragent == d__.guid[0].toLowerCase(),
-            m: navigator.deviceMemory == d__.guid[1] || mod_useragent.includes('android'),
+            m: navigator.deviceMemory == d__.guid[1] || (/android/gi).test(mod_useragent),
             g: getVideoCardInfo()['renderer'].toLowerCase() == d__.guid[2]['renderer'].toLowerCase()
           }
           let exp = d__.expired, _ex = 0, _et = 0
