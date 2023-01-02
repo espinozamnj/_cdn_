@@ -1456,6 +1456,9 @@ body::-webkit-scrollbar-thumb:active {
     transform: translateX(0px) !important;
     opacity: 1;
   }
+  ._2QgSC {
+    z-index: 501;
+  }
   div#main._3xTHG {
     transform: none !important;
   }
