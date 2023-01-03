@@ -536,12 +536,28 @@ footer#react-pen-footer:hover {
   overflow: hidden;
   display: block;
 }
+.dashboard-card-deck {
+  padding-top: 10px;
+}
 .card.dashboard-card .card-body a.coursename {
   margin: 0px !important;
   width: 100%;
   text-align: left;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
+  display: block;
+}
+.block-myoverview.block-cards .dashboard-card-deck .ml-auto.dropdown {
+  top: 0;
+  background-color: rgba(255, 255, 255, .6);
+}
+.card.dashboard-card {
+  box-shadow: none;
+  border: 2px solid #ebebeb;
+}
+.card.dashboard-card:hover {
+  border:  2px solid #686868;
+  box-shadow: none;
 }
 [data-region="recentlyaccessedcourses-view-content"] .card.dashboard-card {
   width: auto;
