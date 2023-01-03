@@ -507,11 +507,41 @@ footer#react-pen-footer:hover {
 .card.dashboard-card > a {
   display: none;
 }
+.card .card-body .text-muted {
+  display: none !important;
+}
+@media screen and (max-width: 800px) {
+  .card-deck.dashboard-card-deck .dashboard-card {
+    width: 100%
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 1400px) {
+  .card-deck.dashboard-card-deck .dashboard-card {
+    width: calc(50% - (0.5rem * 2));
+  }
+}
+@media screen and (min-width: 1400px) {
+  .card-deck.dashboard-card-deck .dashboard-card {
+    width: calc(33% - (0.5rem * 2));
+  }
+}
+[data-region=favourite-icon] {
+  display: none;
+}
+.dashboard-card .card-body a .multiline {
+  font-weight: normal;
+  font-family: 'Open Sans';
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+}
 .card.dashboard-card .card-body a.coursename {
   margin: 0px !important;
   width: 100%;
   text-align: left;
-  padding-left: 1rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
 }
 [data-region="recentlyaccessedcourses-view-content"] .card.dashboard-card {
   width: auto;
