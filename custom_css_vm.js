@@ -1483,6 +1483,7 @@ body::-webkit-scrollbar-thumb:active {
   }
   ._2Ts6i._2xAQV #main {
     width: 100% !important;
+    transform: none !important;
   }
   ._2Ts6i._3RGKj {
     position: fixed;
@@ -1505,9 +1506,6 @@ body::-webkit-scrollbar-thumb:active {
   }
   ._2QgSC {
     z-index: 501;
-  }
-  div#main._3xTHG {
-    transform: none !important;
   }
   ._2Ts6i._1xFRo {
     box-shadow: 0px 0px 12px 0px #0000003e;
