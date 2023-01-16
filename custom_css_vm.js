@@ -1101,6 +1101,7 @@ html[data-theme="light"] {
   display: block;
   position: absolute;
   top: 20px;
+  bottom: 90px;
   opacity: 0.05;
   transtion: all 0.2s;
 }
