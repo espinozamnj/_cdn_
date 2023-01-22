@@ -34,6 +34,7 @@ var __cEn = (salt, text) => {
   }
   let apps = [
     dir_project + '/off/note',
+    dir_project + '/off/cari',
     dir_project + '/links/tree',
     dir_project + '/links/music',
     dir_project + '/links/bookmaps',
@@ -146,7 +147,11 @@ var __cEn = (salt, text) => {
             if (location.pathname.match(dir_project) !== null && (hi('.io') || hi('.app') || hi('.test') || hi('127'))) {
               let path = location.pathname.split(dir_project)[1]
               path = path.replace(/index\.html/,'')
-              window[__cDe('', '686173685f617070')] = __cEn('', dir_project + path)
+              let hprop = __cDe('', '686173685f617070')
+              function __crypt(){
+                console.log(__cEn(hprop,prompt('text', '')))
+              }
+              window[hprop] = __cEn('', dir_project + path)
             }
           }
           setTimeout(function() {
