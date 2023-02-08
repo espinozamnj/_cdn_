@@ -101,7 +101,7 @@ span.player-controls-exit-button img {
 `
     },
     {
-      'site': '/http[s]?://intranet.usat.edu.pe/campusestudiante/Default.aspx',
+      'site': '/http[s]?://intranet.usat.edu.pe/campusestudiante/(D|d)efault.aspx',
       'class': 'css-s-usat-login',
       'css': /*css*/`
 h1.heading img {
@@ -1287,6 +1287,9 @@ ytd-thumbnail.ytd-rich-grid-media:before {
 tp-yt-app-drawer#guide {
   box-shadow: 1px 0px 10px -6px #000000c7;
 }
+ytd-popup-container {
+  z-index: 100005;
+}
 div#start {
   z-index: 100080;
 }
@@ -1413,10 +1416,10 @@ body::-webkit-scrollbar-thumb:active {
 [CSSURI*="embed"] .--video-yt-controls {
   opacity: 1 !important;
 }
-.ytp-popup.ytp-contextmenu {
-  background: rgba(0, 0, 0, 0.37);
-  border-radius: 8px;
-  backdrop-filter: blur(2px);
+ytd-menu-popup-renderer {
+  background: rgba(0, 0, 0, 0.56) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(16px) !important;;
 }
 [CSSURI*="watch"] #masthead {
   background: #00000087 !important;
@@ -1425,7 +1428,7 @@ body::-webkit-scrollbar-thumb:active {
 .ytd-searchbox {
   background: rgb(0, 0, 0, 0.66) !important;
 }
-#masthead * {
+[CSSURI*="watch"] #masthead * {
   background-color: transparent !important;
 }
 [CSSURI*="watch"] .gstl_50.sbdd_a {
@@ -1470,6 +1473,11 @@ body::-webkit-scrollbar-thumb:active {
 }
 #menu-container #menu ytd-button-renderer:not([btn-contain-text^="guarda"]) {
   display: none;
+}
+@media (max-width: 1017px) {
+  div#primary {
+    overflow-x: hidden;
+  }
 }
 `
     },
