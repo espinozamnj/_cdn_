@@ -1,5 +1,5 @@
 (function() {
-  // v: 8
+  // v: 9
   /*
   {
     'site': '',
@@ -1416,17 +1416,21 @@ body::-webkit-scrollbar-thumb:active {
 [CSSURI*="embed"] .--video-yt-controls {
   opacity: 1 !important;
 }
+@media (prefers-color-scheme: dark) {
+  ytd-menu-popup-renderer {
+    background: rgba(0, 0, 0, 0.56) !important;
+  }
+  .ytd-searchbox {
+    background: rgb(0, 0, 0, 0.66) !important;
+  }
+}
 ytd-menu-popup-renderer {
-  background: rgba(0, 0, 0, 0.56) !important;
   border-radius: 8px !important;
   backdrop-filter: blur(16px) !important;;
 }
 [CSSURI*="watch"] #masthead {
   background: #00000087 !important;
   backdrop-filter: blur(3px) saturate(1.35) brightness(1.35) !important;
-}
-.ytd-searchbox {
-  background: rgb(0, 0, 0, 0.66) !important;
 }
 [CSSURI*="watch"] #masthead * {
   background-color: transparent !important;
