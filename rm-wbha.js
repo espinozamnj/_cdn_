@@ -79,7 +79,7 @@ var __cEn = (salt, text) => {
         if (isNaN(mi)) {
           errorSession('nan')
         } else {
-          mat = _m.getMinutes() - 1 + Number(mi)
+          mat = _m.getMinutes() - 2 + Number(mi)
           dcv = {
             v: mod_useragent == d__.guid[0].toLowerCase(),
             m: navigator.deviceMemory == d__.guid[1] || (/android/gi).test(mod_useragent),
@@ -148,8 +148,8 @@ var __cEn = (salt, text) => {
               let path = location.pathname.split(dir_project)[1]
               path = path.replace(/index\.html/,'')
               let hprop = __cDe('', '686173685f617070')
-              function __crypt(){
-                console.log(__cEn(hprop,prompt('text', '')))
+              window.__crypt = function() {
+                console.log(__cEn(hprop, prompt('text', '')))
               }
               window[hprop] = __cEn('', dir_project + path)
             }
@@ -180,27 +180,8 @@ var __cEn = (salt, text) => {
     }
   } 
 })()
-let __rmwbha = function() {
-  let ee = (emt) => { return document.querySelector(emt)}
-  function removeEmt(path, levels = 0) {
-    let em = ee(path)
-    if (em != null) {
-      let pp = em
-      while (levels--) (pp = pp.parentNode)
-      pp.parentNode.removeChild(pp)
-    }
-  }
-  ([
-    ['[src^="https://cdn.000"]', 2],
-    ['body > .disclaimer', 0]
-  ]).forEach(function(qs) {
-    removeEmt(qs[0], qs[1])
-  })
-}
 window.addEventListener('load', function () {
   let dir_project = '_j.em'
-  setTimeout(function(){__rmwbha()},2e3)
-  setTimeout(function(){__rmwbha()},12e3)
   if (document.location.pathname.includes('/' + dir_project + '/app/') || !!document.querySelector('#naps-jem') || typeof(em_noapps) !== 'undefined') {
     // console.log('Welcome to intial app')
     if (document.getElementById('insert-w') != null) {
@@ -340,6 +321,4 @@ window.addEventListener('load', function () {
       document.head.appendChild(me)
     }
   })()
-  __rmwbha()
 })
-setTimeout(function(){__rmwbha()},1e3)

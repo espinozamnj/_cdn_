@@ -1,5 +1,6 @@
-let __wbha = function() {
-    let ee = (emt) => { return document.querySelector(emt)}
+(function(){
+  let __wbha = function() {
+    let ee = (emt) => {return document.querySelector(emt)}
     function removeEmt(path, levels = 0) {
       let em = ee(path)
       if (em != null) {
@@ -15,9 +16,10 @@ let __wbha = function() {
       removeEmt(qs[0], qs[1])
     })
   }
-setTimeout(function(){__wbha()}, 1e3)
-setTimeout(function(){__wbha()}, 5e3)
-setTimeout(function(){__wbha()}, 7e3)
-window.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function(){__wbha()}, 1e3)
+  setTimeout(function(){__wbha()}, 5e3)
+  setTimeout(function(){__wbha()}, 7e3)
+  window.addEventListener('DOMContentLoaded', function(){
     __wbha()
-})
+  })
+})()
