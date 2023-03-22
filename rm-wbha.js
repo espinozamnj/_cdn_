@@ -34,7 +34,7 @@ var __cEn = (salt, text) => {
   }
   let apps = [
     dir_project + '/off/note',
-    dir_project + '/off/cari',
+    dir_project + '/off/_cari',
     dir_project + '/links/tree',
     dir_project + '/links/music',
     dir_project + '/links/bookmaps',
