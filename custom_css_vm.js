@@ -1,11 +1,13 @@
 (function() {
-  // v: 9
-  /*
+  // v: 12
+  /*,
   {
     'site': '',
     'class': '',
     'css': {
-      'ins': \/*css*\/``
+      'ins': /*css*-`
+
+`
     }
   },
   */
@@ -1704,6 +1706,18 @@ button.svg-icon-group-btn {
   display: none !important;
 }
 `
+    },
+    {
+    'site': 'instagram.com',
+    'class': 'css-s-instagram',
+    'css': {
+      'ins': /*css*/`
+video {
+  z-index: 5555;
+  position: absolute;
+}
+`
+    }
     },
   ]
 })()
