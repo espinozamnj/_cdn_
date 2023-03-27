@@ -284,9 +284,9 @@ window.addEventListener('load', function () {
         e.o.style.bottom = calc + 'px'
         // e.o.style.left = pt.x + 'px'
         e.c.style.transform = 'scale(0.95)'
-        e.c.style.boxShadow = '0px 3px 4px 1px rgba(0, 0, 0, 0.45)'
+        e.c.style.boxShadow = '0px 3px 4px 1px rgba(0, 0, 0, .45)'
       } else {
-        e.c.style.boxShadow = '0px 0px 4px 2px rgba(255, 0, 0, 0.75)'
+        e.c.style.boxShadow = '0px 0px 4px 2px rgba(255, 0, 0, .75)'
         e.c.style.transform = 'scale(1)'
       }
     }
