@@ -1403,6 +1403,9 @@ body::-webkit-scrollbar-thumb:active {
 .ytp-chrome-top {
   opacity: 0;
 }
+[theater-requested_] #columns {
+  display: none;
+}
 .ytp-chrome-top:hover {
   opacity: 1;
 }
@@ -1708,16 +1711,39 @@ button.svg-icon-group-btn {
 `
     },
     {
-    'site': 'instagram.com',
-    'class': 'css-s-instagram',
-    'css': {
-      'ins': /*css*/`
+      'site': 'instagram.com',
+      'class': 'css-s-instagram',
+      'css': {
+        'ins': /*css*/`
 video {
   z-index: 5555;
   position: absolute;
 }
 `
-    }
+      }
     },
+    {
+      'site': 'chat.openai.com',
+      'class': 'css-c-openaichat',
+      'css': `
+.flex.justify-between.lg\\:block,
+.sticky.top-0.z-10.flex.items-center.border-b.text-gray-200,
+.dark.hidden.bg-gray-900.md\\:flex.md\\:w-\\[260px\\].md\\:flex-col,
+.group.w-full.text-gray-800 .w-\\[30px\\],
+.px-3.pt-2.pb-3.text-center.text-xs {
+  display: none;
+}
+.absolute.bottom-0.left-0.w-full.pt-2 {
+  padding-bottom: 10px;
+  position: relative;
+}
+.flex-1.overflow-hidden {
+  flex: 1;
+}
+[class^="react-scroll-to-bottom"] {
+  overflow: overlay;
+}
+`
+    }
   ]
 })()
