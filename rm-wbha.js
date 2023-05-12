@@ -34,7 +34,6 @@ var __cEn = (salt, text) => {
   }
   let apps = [
     dir_project + '/off/note',
-    dir_project + '/off/cari',
     dir_project + '/links/tree',
     dir_project + '/links/music',
     dir_project + '/links/bookmaps',
@@ -59,7 +58,7 @@ var __cEn = (salt, text) => {
     localStorage.removeItem('sett')
     let encode_require_login = location.origin + '/' + dir_project + '/?=' + __cEn('to', location.pathname)
     if (redirect) {
-        location.href = encode_require_login
+      location.href = encode_require_login
     }
   }
   if (isP) {
@@ -180,7 +179,7 @@ var __cEn = (salt, text) => {
     }
   } 
 })()
-window.addEventListener('load', function () {
+window.addEventListener('load', function() {
   let dir_project = '_j.em'
   if (document.location.pathname.includes('/' + dir_project + '/app/') || !!document.querySelector('#naps-jem') || typeof(em_noapps) !== 'undefined') {
     // console.log('Welcome to intial app')

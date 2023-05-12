@@ -1403,8 +1403,10 @@ body::-webkit-scrollbar-thumb:active {
 .ytp-chrome-top {
   opacity: 0;
 }
-[theater-requested_] #columns {
-  display: none;
+@media (max-width: 600px) {
+  ytd-watch-flexy[theater-requested_] #primary.ytd-watch-flexy {
+    margin-left: 12px;
+  }
 }
 .ytp-chrome-top:hover {
   opacity: 1;
