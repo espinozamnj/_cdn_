@@ -1,16 +1,5 @@
 (function() {
-  // v: 23.05.10
-  /*,
-  {
-    'site': '',
-    'class': '',
-    'css': {
-      'ins': /*css*-`
-
-`
-    }
-  },
-  */
+  window.custom_css_vm_bank_js_version = '23.05.16'
   window.custom_css_vm_bank_js = [
     {
       'site': '/clarovideo.com/peru/watch/.*',
@@ -1747,5 +1736,16 @@ video {
 }
 `
     }
+    /*,
+    {
+      'site': '',
+      'class': '',
+      'css': {
+        'ins': /*css*-`
+
+  `
+      }
+    }
+    */
   ]
 })()
