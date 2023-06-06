@@ -1,5 +1,5 @@
 (function() {
-  window.custom_css_vm_bank_js_version = '23.05.16'
+  window.custom_css_vm_bank_js_version = '23.06.05'
   window.custom_css_vm_bank_js = [
     {
       'site': '/clarovideo.com/peru/watch/.*',
@@ -719,27 +719,15 @@ div#board::-webkit-scrollbar-thumb {
 div#board::-webkit-scrollbar {
   height: 8px;
 }
-a#permission-level,
-.js-board-header-btn-org-wrapper + span {
-  display: none;
-}
 #board.collapsed-workspace-nav::-webkit-scrollbar-button {
   width: 14px;
 }
-.js-fill-card-detail-desc
-  .u-gutter
-  .editable
-  .markeddown
-  a:not(.atlaskit-smart-link) {
+.js-fill-card-detail-desc .u-gutter .editable .markeddown a:not(.atlaskit-smart-link) {
   color: #429feb;
   text-decoration: none;
   position: relative;
 }
-.js-fill-card-detail-desc
-  .u-gutter
-  .editable
-  .markeddown
-  a:not(.atlaskit-smart-link)::before {
+.js-fill-card-detail-desc .u-gutter .editable .markeddown a:not(.atlaskit-smart-link)::before {
   content: "";
   position: absolute;
   bottom: -1px;
@@ -753,11 +741,20 @@ a#permission-level,
   transition: 0.1s;
   transition-timing-function: ease-in-out;
 }
-.js-fill-card-detail-desc
-  .u-gutter
-  .editable
-  a:not(.atlaskit-smart-link):hover::before {
+.js-fill-card-detail-desc .u-gutter .editable a:not(.atlaskit-smart-link):hover::before {
   height: 100%;
+}
+.board-header.js-board-header.board-header-rewrite {
+  position: absolute;
+  z-index: 2;
+  width: calc(100% - 16px);
+  transform: translateY(-90%);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.board-header.js-board-header.board-header-rewrite:hover {
+  transform: translateY(0);
+  opacity: 1;
 }
 `
     },
