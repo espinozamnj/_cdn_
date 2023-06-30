@@ -1,5 +1,5 @@
 (function() {
-  window.custom_css_vm_bank_js_version = '23.06.05'
+  window.custom_css_vm_bank_js_version = '23.06.30'
   window.custom_css_vm_bank_js = [
     {
       'site': '/clarovideo.com/peru/watch/.*',
@@ -744,7 +744,7 @@ div#board::-webkit-scrollbar {
 .js-fill-card-detail-desc .u-gutter .editable a:not(.atlaskit-smart-link):hover::before {
   height: 100%;
 }
-.board-header.js-board-header.board-header-rewrite {
+.board-header {
   position: absolute;
   z-index: 2;
   width: calc(100% - 16px);
@@ -752,7 +752,7 @@ div#board::-webkit-scrollbar {
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
-.board-header.js-board-header.board-header-rewrite:hover {
+.board-header:hover {
   transform: translateY(0);
   opacity: 1;
 }
