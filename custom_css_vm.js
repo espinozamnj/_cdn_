@@ -1,5 +1,5 @@
 (function() {
-  window.custom_css_vm_bank_js_version = '23.06.30'
+  window.custom_css_vm_bank_js_version = '23.07.06'
   window.custom_css_vm_bank_js = [
     {
       'site': '/clarovideo.com/peru/watch/.*',
@@ -1365,7 +1365,7 @@ body::-webkit-scrollbar-thumb:active {
 #page-manager {
   margin-top: 0 !important;
 }
-[theater-requested_] #player-theater-container {
+[theater-requested_] #player-wide-container {
   height: 100vh !important;
   max-height: 100vh !important;
   min-height: 100vh !important;
