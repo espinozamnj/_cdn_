@@ -377,8 +377,7 @@ div#omnibox-container,
 .app-viewcard-strip.ZiieLd,
 .scene-footer-container.Hk4XGb,
 .onegoogle,
-div#watermark,
-#QA0Szd .XltNde.tTVLSc {
+div#watermark {
   opacity: 0;
 }`
     },
