@@ -1,5 +1,5 @@
 (function() {
-  window.custom_css_vm_bank_js_version = '23.07.06'
+  window.custom_css_vm_bank_js_version = '23.07.25'
   window.custom_css_vm_bank_js = [
     {
       'site': '/clarovideo.com/peru/watch/.*',
@@ -368,19 +368,19 @@ div#docs-chrome:hover {
 `
     },
     {
-      'site': '/.+google.com/maps/.*',
+      'site': '/.+google.com(.{2,3})?/maps/.*',
       'prevent': true,
-      'class': 'css-s-slides',
+      'class': 'css-s-maps',
       'css': /*css*/`
 div#assistive-chips,
 div#omnibox-container,
 .app-viewcard-strip.ZiieLd,
 .scene-footer-container.Hk4XGb,
 .onegoogle,
-div#watermark {
+div#watermark,
+#QA0Szd .XltNde.tTVLSc {
   opacity: 0;
-}
-`
+}`
     },
     {
       'site': '/_j.em/off/movie*',
