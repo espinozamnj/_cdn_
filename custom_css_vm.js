@@ -1,5 +1,5 @@
 (function() {
-  window.custom_css_vm_bank_js_version = '23.07.25'
+  window.custom_css_vm_bank_js_version = '23.08.16'
   window.custom_css_vm_bank_js = [
     {
       'site': '/clarovideo.com/peru/watch/.*',
@@ -1714,15 +1714,14 @@ video {
       'class': 'css-c-openaichat',
       'css': `
 .flex.justify-between.lg\\:block,
-.sticky.top-0.z-10.flex.items-center.border-b.text-gray-200,
-.dark.hidden.bg-gray-900.md\\:flex.md\\:w-\\[260px\\].md\\:flex-col,
-.group.w-full.text-gray-800 .w-\\[30px\\],
-.px-3.pt-2.pb-3.text-center.text-xs {
+.sticky.top-0.z-10.text-gray-200,
+.sticky.top-0.w-full,
+.absolute .pb-3.pt-2.text-xs,
+.flex-shrink-0.flex.flex-col.items-end {
   display: none;
 }
 .absolute.bottom-0.left-0.w-full.pt-2 {
   padding-bottom: 10px;
-  position: relative;
 }
 .flex-1.overflow-hidden {
   flex: 1;
