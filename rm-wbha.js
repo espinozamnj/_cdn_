@@ -174,7 +174,7 @@ var __cEn = (salt, text) => {
         }
       } else {
         document.write('<script type="text/undefined">')
-        location.replace('https://cmd.to')
+        location.replace('https://google.com')
       }
     }
   } 
